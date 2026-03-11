@@ -1,2 +1,34 @@
 # react-component-practice
 react组件实战练习
+
+## 那么你会学到什么？
+1. 如何实现一个Tree组件
+2. 递归组件的用法
+3. 组件库封装
+4. 前端打包格式 UMD ESM CJS
+5. 组件库发布npm
+
+## 目录创建
+dist 打包文件
+docs 文档
+packages 组件
+  Tree
+    index.ts 入口
+    tree.tsx 组件
+    styles.css 样式
+    type.ts 类型
+  Button
+    index.ts 入口
+    button.tsx 组件
+    styles.css 样式
+    type.ts 类型
+index.ts 组件汇总
+vite.d.ts 类型
+example
+  index.html 示例
+  App.tsx 示例
+  main.tsx 示例
+package.json 包管理
+vite.config.ts vite配置
+tsconfig.json ts配置
+README.md README
