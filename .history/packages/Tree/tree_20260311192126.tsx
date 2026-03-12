@@ -1,0 +1,41 @@
+import React from "react";
+import type { TreeProps,TreeNode } from "./type";
+
+const Tree: React.FC<TreeProps> = ({data,onChecked}) => {
+  const [treeData,setTreeData] = React.useState<TreeNode[]>(data);
+  
+  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>, node: TreeNode) => {
+    setTreeData(prev => {
+      const newData = [...prev];
+      const updateNode = (nodes: TreeNode[]) => {
+        for(let i=0;i<nodes.length;i++) {
+          if(nodes[i].id === node.id) {
+            nodes[i].selected = e.target.checked;
+            break;
+          }
+          if(nodes[i].children) {
+            updateNode(nodes[i].children!);
+          }
+        }
+      }
+      updateNode(newData);
+      return newData;
+    });
+    onChecked(node.id); 
+  }
+  return (
+    <div>
+      {
+        treeData.map(item => (
+          <div key={item.id}>
+            <input type="checkbox" checked={item.selected} onChange={(e) => handleChecked(e,item)} />
+            {item.name}
+            {
+              item.children && <Tree data={item.children} onChecked={onChecked} />
+            }
+          </div>
+        ))
+      }
+    </div>
+  );
+}
